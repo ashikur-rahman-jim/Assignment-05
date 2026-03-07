@@ -13,10 +13,10 @@ document.getElementById('signin-btn').addEventListener('click', function () {
 
     // if username and password is currect sign-in successfull else sign-in faild
     if(userNameValue === "admin" && passwordValue === "admin123") {
-        alert('Sign in Successfull');
-        window.location.assign('/home.html');
+        alert('Sign in Successful');
+        window.location.assign('home.html');
     } else {
-        alert('Sign in Faild');
+        alert('Sign in Failed');
     }
     
 })
