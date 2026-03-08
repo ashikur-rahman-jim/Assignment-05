@@ -48,20 +48,38 @@
     </header>
 
     <main class="bg-[#F8FAFC] py-5">
-        <section id="filter-btn" class="w-9/12 mx-auto navbar bg-base-100 shadow-sm flex gap-3 px-5 mt-8">
+        <section id="filter-btn" class="w-10/12 mx-auto navbar bg-base-100 shadow-sm flex gap-3 px-5 mt-8">
             <button onclick="filterBtn('all-btn')" id="all-btn" class="btn btn-primary">All</button>
             <button onclick="filterBtn('open-btn')" id="open-btn" class="btn btn-outline">Open</button>
             <button onclick="filterBtn('closed-btn')" id="closed-btn" class="btn btn-outline">Closed</button>
         </section>
 
-        <section id="all-issues" class="w-9/12 mx-auto navbar bg-base-100 shadow-sm flex gap-3 p-5 my-4">
-            <div class="">
-                <img class="w-13 rounded-full p-2 bg-[#ECE4FF]" src="./assets/Aperture.png" alt="">
+        <section id="issue-count-section" class="w-10/12 mx-auto navbar bg-base-100 shadow-sm flex justify-between items-center p-5 my-4">
+            <div class="flex gap-3">
+                <div class="">
+                    <img class="w-13 rounded-full p-2 bg-[#ECE4FF]" src="./assets/Aperture.png" alt="">
+                </div>
+                <div>
+                    <h2 class="font-semibold text-xl text-[#1F2937]"><span id="issue-count">0</span> Issues</h2>
+                    <p class="text-[#64748B]">Track and manage your project issues</p>
+                </div>
             </div>
-            <div>
-                <h2 class="font-semibold text-xl text-[#1F2937]"><span id="issue-count">0</span> Issues</h2>
-                <p class="text-[#64748B]">Track and manage your project issues</p>
+
+            <div class="flex gap-4">
+                <div class="flex items-center gap-1">
+                    <img src="./assets/Ellipse-open.png" alt="">
+                    <p class="font-medium text-[#1F2937]">Open</p>
+                </div>
+                <div class="flex items-center gap-1">
+                    <img src="./assets/Ellipse-closed.png" alt="">
+                    <p class="font-medium text-[#1F2937]">Closed</p>
+                </div>
             </div>
+        </section>
+
+        <section id="all-cards"
+            class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 space-x-1 space-y-4">
+
         </section>
     </main>
 
