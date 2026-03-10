@@ -377,14 +377,14 @@ function displayIssuesDetails(details) {
     // console.log(details);
     const detailsCard = document.getElementById('details-card');
     detailsCard.innerHTML = `
-    <h2 class="font-bold text-2xl text-[#1F2937]">${details.title}</h2>
+    <h2 class="font-bold text-xl sm:text-2xl text-[#1F2937]">${details.title}</h2>
                     
     <div class="flex items-center mt-4">
         <p class="font-medium text-[12px] bg-[#00A96E] px-2 rounded-full text-white text-center">${details.status}</p>
         <p class="text-[12px] text-[#64748B]"> - Opened by ${details.author} - ${details.createdAt}</p>
         
     </div>
-    <div class="flex items-center gap-1 my-6">
+    <div class="flex flex-wrap items-center gap-2 my-4 sm:my-6">
         <div class="flex items-center px-1 bg-[#FEECEC] border border-[#FECACA] rounded-full text-[12px]">
             <img src="./assets/BugDroid.png" alt="">
             <p class="text-[#EF4444]">${details.labels[0].toUpperCase()}</p>
@@ -394,14 +394,14 @@ function displayIssuesDetails(details) {
             <p>${details.labels[1] ? details.labels[1].toUpperCase() : "NOT FOUND"}</p>
         </div>
     </div>
-    <p class="text-[16px] text-[#64748B] my-6">${details.description}</p>
+    <p class="text-[14px] sm:text-[16px] text-[#64748B] my-4 sm:my-6">${details.description}</p>
     <div class="flex items-center gap-20">
         <div>
-            <p class="text-[16px] text-[#64748B]">Assignee:</p>
-            <p class="text-[16px] text-[#1F2937] font-semibold">${details.assignee}</p>
+            <p class="text-[14px] sm:text-[16px] text-[#64748B]">Assignee:</p>
+            <p class="text-[14px] sm:text-[16px] text-[#1F2937] font-semibold">${details.assignee}</p>
         </div>
         <div>
-            <p class="text-[16px] text-[#64748B]">Priority:</p>
+            <p class="text-[14px] sm:text-[16px] text-[#64748B]">Priority:</p>
             <p class="bg-[#EF4444] text-[12px] font-medium text-white text-center rounded-full">${details.priority.toUpperCase()}</p>
         </div>
     </div>

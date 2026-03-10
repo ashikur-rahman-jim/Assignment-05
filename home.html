@@ -29,17 +29,17 @@
 
 <body>
 
-    <header class="navbar bg-base-100 shadow-sm">
-        <div class="w-11/12 mx-auto flex justify-between items-center">
+    <header class="navbar bg-base-100 shadow-sm px-3">
+        <div class="w-11/12 mx-auto flex justify-between items-center gap-2 flex-wrap">
             <div id="logo" class="flex items-center gap-2">
-                <div class="w-8">
+                <div class="w-7 sm:w-8">
                     <img src="./assets/github-logo.png" alt="">
                 </div>
                 <div>
-                    <h2 class="text-2xl font-semibold text-[#1F2937]">GitHub Issues Tracker</h2>
+                    <h2 class="text-lg sm:text-2xl font-semibold text-[#1F2937]">GitHub Issues Tracker</h2>
                 </div>
             </div>
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
                 <input id="input-search" type="text" placeholder="Search issues..."
                     class="input input-bordered w-24 md:w-auto" />
                 <button id="issue-btn" class="btn btn-primary font-semibold"><i class="fa-solid fa-plus"></i>New
@@ -49,32 +49,32 @@
     </header>
 
     <main class="bg-[#F8FAFC] py-5">
-        <section id="filter-btn" class="w-10/12 mx-auto navbar bg-base-100 shadow-sm flex gap-3 px-5 mt-8">
+        <section id="filter-btn" class="w-[95%] sm:w-11/12 mx-auto navbar bg-base-100 shadow-sm flex gap-2 sm:gap-3 px-3 sm:px-5 mt-4 sm:mt-8">
             <button onclick="filterBtn('all-btn')" id="all-btn" class="btn btn-primary">All</button>
             <button onclick="filterBtn('open-btn')" id="open-btn" class="btn btn-outline">Open</button>
             <button onclick="filterBtn('closed-btn')" id="closed-btn" class="btn btn-outline">Closed</button>
         </section>
 
         <section id="issue-count-section"
-            class="w-10/12 mx-auto navbar bg-base-100 shadow-sm flex justify-between items-center p-5 my-4">
-            <div class="flex gap-3">
+            class="w-[95%] sm:w-11/12 mx-auto bg-base-100 shadow-sm flex flex-wrap justify-between items-center p-3 sm:p-5 my-3 sm:my-4 gap-3">
+            <div class="flex gap-2 sm:gap-3 items-center ">
                 <div class="">
-                    <img class="w-13 rounded-full p-2 bg-[#ECE4FF]" src="./assets/Aperture.png" alt="">
+                    <img class="w-10 sm:w-13 rounded-full p-2 bg-[#ECE4FF]" src="./assets/Aperture.png" alt="">
                 </div>
                 <div>
-                    <h2 class="font-semibold text-xl text-[#1F2937]"><span id="issue-count">0</span> Issues</h2>
-                    <p class="text-[#64748B]">Track and manage your project issues</p>
+                    <h2 class="font-semibold text-lg sm:text-xl text-[#1F2937]"><span id="issue-count">0</span> Issues</h2>
+                    <p class="text-sm text-[#64748B]">Track and manage your project issues</p>
                 </div>
             </div>
 
-            <div class="flex gap-4">
+            <div class="flex gap-3 sm:gap-4">
                 <div class="flex items-center gap-1">
                     <img src="./assets/Ellipse-open.png" alt="">
-                    <p class="font-medium text-[#1F2937]">Open</p>
+                    <p class="font-medium text-sm  text-[#1F2937]">Open</p>
                 </div>
                 <div class="flex items-center gap-1">
                     <img src="./assets/Ellipse-closed.png" alt="">
-                    <p class="font-medium text-[#1F2937]">Closed</p>
+                    <p class="font-medium text-sm text-[#1F2937]">Closed</p>
                 </div>
             </div>
         </section>
@@ -88,18 +88,18 @@
         <section id="issues-container">
             <section id="all-issues" class="">
                 <div id="all-cards"
-                    class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 gap-x-1 gap-y-4"></div>
+                    class="w-[95%] sm:w-11/12 mx-auto bg-base-100 shadow-sm p-3 sm:p-5 my-3 sm:my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 rounded-lg"></div>
 
             </section>
 
             <section id="open-card" class="hidden">
                 <div id="open-issues"
-                    class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 space-x-1 space-y-4"></div>
+                    class="w-[95%] sm:w-11/12 mx-auto bg-base-100 shadow-sm p-3 sm:p-5 my-3 sm:my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 rounded-lg"></div>
             </section>
 
             <section id="closed-card" class="hidden">
                 <div id="closed-issues"
-                    class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 space-x-1 space-y-4"></div>
+                    class="w-[95%] sm:w-11/12 mx-auto bg-base-100 shadow-sm p-3 sm:p-5 my-3 sm:my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 rounded-lg"></div>
             </section>
         </section>
     </main>
