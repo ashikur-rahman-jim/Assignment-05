@@ -87,7 +87,7 @@ function displayAllIssues(issues) {
             }
 
             div.innerHTML = `
-            <div id="issue-card" class="space-y-4 border-t-4 border-[#00A96E] rounded-lg p-3 shadow-md">
+            <div onclick="loadIssuesDetails(${issue.id})" id="issue-card" class="cursor-pointer space-y-4 border-t-4 border-[#00A96E] rounded-lg p-3 shadow-md">
                 <div class="flex justify-between items-center">
                     <img src="./assets/Open-Status.png" alt="">
                     <p class="${textColor} ${bgColor} font-medium text-[12px] px-3 text-center rounded-full">
@@ -143,7 +143,7 @@ function displayAllIssues(issues) {
             }
 
             div.innerHTML = `
-            <div id="issue-card" class="space-y-4 border-t-4 border-[#A855F7] rounded-lg p-3 shadow-md">
+            <div onclick="loadIssuesDetails(${issue.id})" id="issue-card" class="cursor-pointer space-y-4 border-t-4 border-[#A855F7] rounded-lg p-3 shadow-md">
                 <div class="flex justify-between items-center">
                     <img src="./assets/Closed- Status .png" alt="">
                     <p class="${textColor} ${bgColor} font-medium text-[12px] px-3 text-center rounded-full">
@@ -222,7 +222,7 @@ function displayOpenIssues(issues) {
             }
 
             div.innerHTML = `
-            <div id="issue-card" class="space-y-4 border-t-4 border-[#00A96E] rounded-lg p-3 shadow-md">
+            <div onclick="loadIssuesDetails(${issue.id})" id="issue-card" class="cursor-pointer space-y-4 border-t-4 border-[#00A96E] rounded-lg p-3 shadow-md">
                 <div class="flex justify-between items-center">
                     <img src="./assets/Open-Status.png" alt="">
                     <p class="${textColor} ${bgColor} font-medium text-[12px] px-3 text-center rounded-full">
@@ -302,7 +302,7 @@ function displayClosedIssues(issues) {
             }
 
             div.innerHTML = `
-            <div id="issue-card" class="space-y-4 border-t-4 border-[#A855F7] rounded-lg p-3 shadow-md">
+            <div onclick="loadIssuesDetails(${issue.id})" id="issue-card" class="cursor-pointer space-y-4 border-t-4 border-[#A855F7] rounded-lg p-3 shadow-md">
                 <div class="flex justify-between items-center">
                     <img src="./assets/Closed- Status .png" alt="">
                     <p class="${textColor} ${bgColor} font-medium text-[12px] px-3 text-center rounded-full">
@@ -333,6 +333,50 @@ function displayClosedIssues(issues) {
         }
 
     }
+}
+
+// Load Issues Details
+function loadIssuesDetails(id) {
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
+        .then((res) => res.json())
+        .then((data) => displayIssuesDetails(data.data))
+}
+
+function displayIssuesDetails(details) {
+    // console.log(details);
+    const detailsCard = document.getElementById('details-card');
+    detailsCard.innerHTML = `
+    <h2 class="font-bold text-2xl text-[#1F2937]">${details.title}</h2>
+                    
+    <div class="flex items-center mt-4">
+        <p class="font-medium text-[12px] bg-[#00A96E] px-2 rounded-full text-white text-center">${details.status}</p>
+        <p class="text-[12px] text-[#64748B]"> - Opened by ${details.author} - ${details.createdAt}</p>
+        
+    </div>
+    <div class="flex items-center gap-1 my-6">
+        <div class="flex items-center px-1 bg-[#FEECEC] border border-[#FECACA] rounded-full text-[12px]">
+            <img src="./assets/BugDroid.png" alt="">
+            <p class="text-[#EF4444]">${details.labels[0].toUpperCase()}</p>
+        </div>
+        <div class="flex items-center px-1 bg-[#FEECEC] border border-[#FECACA] rounded-full text-[12px]">
+            <img src="./assets/Lifebuoy.png" alt="">
+            <p>${details.labels[1] ? details.labels[1].toUpperCase() : "NOT FOUND"}</p>
+        </div>
+    </div>
+    <p class="text-[16px] text-[#64748B] my-6">${details.description}</p>
+    <div class="flex items-center gap-20">
+        <div>
+            <p class="text-[16px] text-[#64748B]">Assignee:</p>
+            <p class="text-[16px] text-[#1F2937] font-semibold">${details.assignee}</p>
+        </div>
+        <div>
+            <p class="text-[16px] text-[#64748B]">Priority:</p>
+            <p class="bg-[#EF4444] text-[12px] font-medium text-white text-center rounded-full">${details.priority.toUpperCase()}</p>
+        </div>
+    </div>
+    `;
+    document.getElementById('my_modal_5').showModal();
+
 }
 
 // loadClosedIssues();
