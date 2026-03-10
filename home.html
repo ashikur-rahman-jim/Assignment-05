@@ -40,7 +40,8 @@
                 </div>
             </div>
             <div class="flex items-center gap-3">
-                <input id="input-search" type="text" placeholder="Search issues..." class="input input-bordered w-24 md:w-auto" />
+                <input id="input-search" type="text" placeholder="Search issues..."
+                    class="input input-bordered w-24 md:w-auto" />
                 <button id="issue-btn" class="btn btn-primary font-semibold"><i class="fa-solid fa-plus"></i>New
                     Issue</button>
             </div>
@@ -54,7 +55,8 @@
             <button onclick="filterBtn('closed-btn')" id="closed-btn" class="btn btn-outline">Closed</button>
         </section>
 
-        <section id="issue-count-section" class="w-10/12 mx-auto navbar bg-base-100 shadow-sm flex justify-between items-center p-5 my-4">
+        <section id="issue-count-section"
+            class="w-10/12 mx-auto navbar bg-base-100 shadow-sm flex justify-between items-center p-5 my-4">
             <div class="flex gap-3">
                 <div class="">
                     <img class="w-13 rounded-full p-2 bg-[#ECE4FF]" src="./assets/Aperture.png" alt="">
@@ -77,18 +79,28 @@
             </div>
         </section>
 
-        <section id="all-issues" class="">
-            <div id="all-cards"
-            class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 gap-x-1 gap-y-4"></div>
-
+        <section id="spinner" class="hidden">
+            <div class="flex justify-center items-center py-10">
+                <span class="loading loading-bars loading-xl"></span>
+            </div>
         </section>
 
-        <section id="open-card" class="hidden">
-            <div id="open-issues" class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 space-x-1 space-y-4"></div>
-        </section>
+        <section id="issues-container">
+            <section id="all-issues" class="">
+                <div id="all-cards"
+                    class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 gap-x-1 gap-y-4"></div>
 
-        <section id="closed-card" class="hidden">
-            <div id="closed-issues" class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 space-x-1 space-y-4"></div>
+            </section>
+
+            <section id="open-card" class="hidden">
+                <div id="open-issues"
+                    class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 space-x-1 space-y-4"></div>
+            </section>
+
+            <section id="closed-card" class="hidden">
+                <div id="closed-issues"
+                    class="w-10/12 mx-auto bg-base-100 shadow-sm p-5 my-4 grid grid-cols-4 space-x-1 space-y-4"></div>
+            </section>
         </section>
     </main>
 
@@ -98,7 +110,7 @@
         <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
                 <div id="details-card">
-                    
+
                 </div>
                 <div class="modal-action">
                     <form method="dialog">

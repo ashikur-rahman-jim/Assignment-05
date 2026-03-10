@@ -40,8 +40,20 @@ function filterBtn(id) {
     }
 }
 
+// Spinner functionality
+const manageSpinner = (status) => {
+    if(status == true) {
+        document.getElementById("spinner").classList.remove('hidden');
+        document.getElementById("issues-container").classList.add('hidden');
+    } else {
+        document.getElementById("issues-container").classList.remove('hidden');
+        document.getElementById("spinner").classList.add('hidden');
+    }
+}
+
 // Load All Issues
 function loadAllIssues() {
+    manageSpinner(true);
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
         .then((res) => res.json())
         .then((data) => displayAllIssues(data.data))
@@ -173,10 +185,14 @@ function displayAllIssues(issues) {
 
         allCards.append(div);
     }
+
+    manageSpinner(false);
 }
 
 // Load Open Issues
 function loadOpenIssues() {
+    manageSpinner(true);
+
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
         .then((res) => res.json())
         .then((data) => displayOpenIssues(data.data))
@@ -253,10 +269,14 @@ function displayOpenIssues(issues) {
         }
 
     }
+
+    manageSpinner(false);
 }
 
 // Load Closed Issues
 function loadClosedIssues() {
+    manageSpinner(true);
+
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
         .then((res) => res.json())
         .then((data) => displayClosedIssues(data.data))
@@ -333,10 +353,14 @@ function displayClosedIssues(issues) {
         }
 
     }
+
+    manageSpinner(false);
 }
 
 // Load Issues Details
 function loadIssuesDetails(id) {
+    manageSpinner(true);
+
     fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
         .then((res) => res.json())
         .then((data) => displayIssuesDetails(data.data))
@@ -377,11 +401,13 @@ function displayIssuesDetails(details) {
     `;
     document.getElementById('my_modal_5').showModal();
 
+    manageSpinner(false);
 }
 
 loadAllIssues();
 
 document.getElementById('issue-btn').addEventListener("click", () => {
+    manageSpinner(true);
     const input = document.getElementById('input-search');
     const searchValue = input.value.trim().toLocaleLowerCase();
     // console.log(searchValue);
@@ -390,12 +416,13 @@ document.getElementById('issue-btn').addEventListener("click", () => {
     .then((res) => res.json())
     .then((data) => {
         const allIssue = data.data;
-        console.log(allIssue);
+        // console.log(allIssue);
         
         const filterIssues = allIssue.filter((word) => word.title.toLocaleLowerCase().includes(searchValue))
         displayAllIssues(filterIssues);
 
         input.value = "";
 
+        manageSpinner(false);
     });
 })
