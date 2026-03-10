@@ -29,6 +29,7 @@ function filterBtn(id) {
     } else if (id === 'open-btn') {
         // console.log('open button clicked');
         allIssues.classList.add('hidden');
+        closedCard.classList.add('hidden');
         openCard.classList.remove('hidden');
         loadOpenIssues();
     } else if (id === 'closed-btn') {
@@ -42,7 +43,7 @@ function filterBtn(id) {
 
 // Spinner functionality
 const manageSpinner = (status) => {
-    if(status == true) {
+    if (status == true) {
         document.getElementById("spinner").classList.remove('hidden');
         document.getElementById("issues-container").classList.add('hidden');
     } else {
@@ -417,18 +418,39 @@ document.getElementById('issue-btn').addEventListener("click", () => {
     const input = document.getElementById('input-search');
     const searchValue = input.value.trim().toLocaleLowerCase();
     // console.log(searchValue);
-    
+
     fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
-    .then((res) => res.json())
-    .then((data) => {
-        const allIssue = data.data;
-        // console.log(allIssue);
-        
-        const filterIssues = allIssue.filter((word) => word.title.toLocaleLowerCase().includes(searchValue))
-        displayAllIssues(filterIssues);
+        .then((res) => res.json())
+        .then((data) => {
+            const allIssue = data.data;
+            // console.log(allIssue);
 
-        input.value = "";
+            const filterIssues = allIssue.filter((word) => word.title.toLocaleLowerCase().includes(searchValue))
+            // displayAllIssues(filterIssues);
+            if (!allIssues.classList.contains('hidden')) {
 
-        manageSpinner(false);
-    });
+                displayAllIssues(filterIssues);
+
+            } else if (!openCard.classList.contains('hidden')) {
+
+                // displayOpenIssues(filterIssues);
+                closedCard.classList.add('hidden');
+                openCard.classList.add('hidden');
+                allIssues.classList.remove('hidden');
+                displayAllIssues(filterIssues);
+
+            } else if (!closedCard.classList.contains('hidden')) {
+
+                // displayClosedIssues(filterIssues);
+                closedCard.classList.add('hidden');
+                openCard.classList.add('hidden');
+                allIssues.classList.remove('hidden');
+                displayAllIssues(filterIssues);
+
+            }
+
+            input.value = "";
+
+            manageSpinner(false);
+        });
 })
