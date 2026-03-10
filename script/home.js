@@ -186,6 +186,8 @@ function displayAllIssues(issues) {
         allCards.append(div);
     }
 
+    document.getElementById('issue-count').innerText = allCards.children.length;
+
     manageSpinner(false);
 }
 
@@ -270,6 +272,8 @@ function displayOpenIssues(issues) {
 
     }
 
+    document.getElementById('issue-count').innerText = openIssues.children.length;
+
     manageSpinner(false);
 }
 
@@ -353,6 +357,8 @@ function displayClosedIssues(issues) {
         }
 
     }
+
+    document.getElementById('issue-count').innerText = closedIssues.children.length;
 
     manageSpinner(false);
 }
